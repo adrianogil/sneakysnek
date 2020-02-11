@@ -51,8 +51,16 @@ def demo():
                 global recorder
                 recorder.stop()
 
+    def handler2(event):
+        print(event.to_json())
+
+        if isinstance(event, sneakysnek.keyboard_event.KeyboardEvent):
+            if event.keyboard_key == sneakysnek.keyboard_keys.KeyboardKey.KEY_ESCAPE:
+                global recorder
+                recorder.stop()
+
     global recorder
-    recorder = Recorder.record(handler)
+    recorder = Recorder.record(handler2)
 
     while recorder.is_recording:
         pass

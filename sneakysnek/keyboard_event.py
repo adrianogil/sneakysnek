@@ -14,5 +14,13 @@ class KeyboardEvent:
         self.keyboard_key = keyboard_key
         self.timestamp = time.time()
 
+    def to_json(self):
+        return {
+            "event_type": "KeyboardEvent",
+            "event_name": self.event.name,
+            "key_name": self.keyboard_key.name,
+            "timestamp": self.timestamp
+        }
+
     def __str__(self):
         return f"KeyboardEvent.{self.event.name} - {self.keyboard_key.name} - {self.timestamp}"
